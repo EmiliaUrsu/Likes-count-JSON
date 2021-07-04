@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likes counter JSON</title>
+</head>
+<body>
+    <button id="likeBTN" onclick="like()" >
+        Like
+    </button>
+
+    <script>
+      localStorage.getItem("likes")?localStorage.getItem("likes"):localStorage.setItem("likes", 0)
+      let likes  = localStorage.getItem("likes")
+      
+        
+        function like(){
+          likes++
+          render()
+          localStorage.setItem("likes", likes)
+        }
+
+        function render(){
+
+        let btn = document.getElementById('likeBTN')
+            btn.innerHTML = `Likes ${setLikes(likes)}`
+
+        }
+
+        function setLikes(nr) {
+            if(nr >= 0 && nr <= 999) {
+                return nr
+            } else if(nr > 999 && nr < 1000000) {
+                nr /= 1000
+                return nr.toFixed(1) + "K"
+            } else if (nr > 999999 && nr < 100000000 ) {
+                nr /= 1000000
+                return nr.toFixed(1) + "M"
+            } else {
+                return "No LIKE  :( )"
+            }
+        }
+
+        render()
+    </script>
+    
+</body>
+</html>
