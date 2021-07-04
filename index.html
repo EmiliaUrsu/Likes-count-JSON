@@ -28,13 +28,13 @@
 
         }
 
-        function setLikes(nr) {
+       function setLikes(nr) {
             if(nr >= 0 && nr <= 999) {
                 return nr
-            } else if(nr > 999 && nr < 1000000) {
+            } else if(nr > 999 && nr < 999999) {
                 nr /= 1000
                 return nr.toFixed(1) + "K"
-            } else if (nr > 999999 && nr < 100000000 ) {
+            } else if (nr >= 1000000 && nr < 100000000 ) {
                 nr /= 1000000
                 return nr.toFixed(1) + "M"
             } else {
